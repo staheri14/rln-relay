@@ -11,7 +11,7 @@ contract(Faucet):
   proc Withdraw(address: Address, amount: Uint256) {.event.}
 
 const ETH_CLIENT* = "ws://localhost:8540/"
-let contractAddress = "0x3A41381ebe117E475182A154c92Ef1644C2047e1"
+let contractAddress = "0x42FDaff322a0748e1A00BC3CeFA95A4fFbB49db8"
 procSuite "Waku rln relay":
   asyncTest  "event subscription faucet":
 
@@ -30,7 +30,8 @@ procSuite "Waku rln relay":
     var contractObj = web3.contractSender(Faucet, Address(contractAddress.hexToByteArray(20))) # creates a Sender object with a web3 field and contract address of type Address
     
     #  send a tx
-    discard await contractObj.withdraw(0.u256).send()
+    let tx = await contractObj.withdraw(0.u256).send()
+    debug "The hash of registration tx: ", tx 
 
     # listen to events
     var fut = newFuture[void]()
