@@ -12,7 +12,7 @@ const
   ETH_CLIENT = "ws://localhost:8540/"
   MembershipFee = 5.u256
 
-let contractAddress = "0x663512ee4a68cb3B4164AD252B8f27b15f20b6c4"
+let contractAddress = "0xC0ca0DEB63cEa95e8A0C55a4e1CDdab8142025F2"
 procSuite "Waku rln relay":
   asyncTest  "event subscription rln": 
     debug "ethereum client address", ETH_CLIENT
@@ -32,8 +32,8 @@ procSuite "Waku rln relay":
 
     # send takes three parameters, c: ContractCallBase, value = 0.u256, gas = 3000000'u64 gasPrice = 0 
     # should use send proc for the contract functions that update the state of the contract
-    let tx = await contractObj.register(77.u256).send(value = MembershipFee)
-    debug "The hash of registration tx: ", tx # value is the membership fee
+    let tx = await contractObj.register(77.u256).send(value = MembershipFee) # value is the membership fee
+    debug "The hash of registration tx: ", tx 
 
 
     var fut = newFuture[void]()
