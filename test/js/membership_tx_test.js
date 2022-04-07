@@ -108,7 +108,7 @@ var abi = [
 var contract_address = '0x663512ee4a68cb3B4164AD252B8f27b15f20b6c4';
 var contract = new web3.eth.Contract(abi, contract_address);
 
-var pk = 900;
+var pk = int(Math.random()*50);
 web3.eth.getAccounts().then(e => 
   contract.methods.register(pk).send({from:e[0], value: 5}).then(function(receipt){
     // receipt can also be a new contract instance, when coming from a "contract.deploy({...}).send()"
