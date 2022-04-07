@@ -103,7 +103,7 @@ var abi = [
     "payable": true
   }
 ]
-var contract_address = '0x663512ee4a68cb3B4164AD252B8f27b15f20b6c4'
+var contract_address = '0x1E98b699B86Ea461099d3DA8A9B5f8805AE88938'
 var myContract = new web3.eth.Contract(abi, contract_address)
 
 myContract.events.MemberRegistered({
