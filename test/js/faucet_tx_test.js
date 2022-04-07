@@ -47,6 +47,12 @@ var abi = [
 var contract_address = '0x3A41381ebe117E475182A154c92Ef1644C2047e1'
 var contract = new web3.eth.Contract(abi, contract_address)
 
-contract.methods.withdraw(0).send({from:'0xaBF0a46327e37099e3438C21436F8B2356a3c0D0'}).then(function(receipt){
-  // receipt can also be a new contract instance, when coming from a "contract.deploy({...}).send()"
-});
+
+web3.eth.getAccounts().then(e => 
+  contract.methods.withdraw(0).send({from:e[0]}).then(function(receipt){
+    // receipt can also be a new contract instance, when coming from a "contract.deploy({...}).send()"
+  })
+);
+
+
+
